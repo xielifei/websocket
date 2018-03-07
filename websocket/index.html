@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>websocket</title>
+	</head>
+
+	<body>
+		<h1>aaaaa</h1>
+		<input id="sendTxt" type="text" />
+		<button id="sendBtn">发送</button>
+		<div id="remove"></div>
+		<script>
+			var websocket = new WebSocket("ws://echo.websocket.org/");
+			websocket.onopen = function() {
+				console.log("aaaaaaaaa")
+				document.getElementById("remove").innerHTML = "conneeee";
+
+			}
+			websocket.onclose = function() {
+				
+			}
+			
+			websocket.onmessage = function(e) {
+				document.getElementById("remove").innerHTML = e.data;
+			}
+			document.getElementById("sendBtn").onclick=function(){
+				var txt=document.getElementById("sendTxt").value;
+				websocket.send(txt);
+			}
+
+
+			//			window.onload=function(){
+			//				document.getElementById("sendBtn").onclick=function(){
+			//				var txt=document.getElementById("sendTxt").value;
+			//
+			//				websocket.send(txt);
+			//				console.log(websocket.send(txt))
+			//				
+			//				}
+			//			}
+		</script>
+	</body>
+
+</html>
